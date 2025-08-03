@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> students = new List<string>();
+
+            Console.WriteLine("Enter student names (type 'done' to finish):");
+
+            while (true)
+            {
+                Console.Write("Student name: ");
+                string input = Console.ReadLine();
+
+                if (input.ToLower() == "done")
+                {
+                    break;
+                }
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    students.Add(input.ToUpper());
+                }
+                else
+                {
+                    Console.WriteLine("Error! Try Again.");
+                }
+            }
+
+            int CountedName = 0;
+            Console.WriteLine("\nAttendance List (All uppercase):");
+            foreach (string student in students)
+            {
+                Console.WriteLine(student);
+                if (student.StartsWith("A"))
+                {
+                    CountedName++;
+                }
+            }
+
+            Console.WriteLine($"\nNumber of names starting with 'A': {CountedName}");
+        }
+    }
+}
