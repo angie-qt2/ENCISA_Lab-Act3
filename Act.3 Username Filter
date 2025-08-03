@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> userNames = new List<string>();
+
+            // Input 5 usernames
+            Console.WriteLine("Enter five(5) usernames:");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Username #{i + 1}: ");
+                string userName = Console.ReadLine();
+                userNames.Add(userName);
+            }
+
+            // Ask for a character to search
+            Console.Write("Enter a character to search for in usernames: ");
+            string searchChar = Console.ReadLine();
+
+            // Validate input
+            if (string.IsNullOrEmpty(searchChar) || searchChar.Length > 1)
+            {
+                Console.WriteLine("\nPlease enter a single character.");
+                return;
+            }
+
+            // Convert search character to lowercase 
+            char searchCharacter = char.ToLower(searchChar[0]);
+
+            // Filter and display matched usernames
+            Console.WriteLine("\nMatched Usernames:");
+            bool foundMatch = false;
+            foreach (string userName in userNames)
+            {
+                if (userName.ToLower().Contains(searchCharacter))
+                {
+                    Console.WriteLine(userName);
+                    foundMatch = true;
+                }
+            }
+
+            if (!foundMatch)
+            {
+                Console.WriteLine("Error! Display matched usernames only.");
+            }
+        }
+    }
+}
