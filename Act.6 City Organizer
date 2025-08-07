@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a list to store city names
+            List<string> cities = new List<string>();
+            Console.WriteLine("Enter city names (type 'exit' when done):");
+            // Input loop to collect city names
+            while (true)
+            {
+                Console.Write("Enter a city name: ");
+                string input = Console.ReadLine();
+            
+                if (input.ToLower() == "exit")
+                {
+                    break; // Exit the loop when user types "exit"
+                }
+                    cities.Add(input); // Add the city to the list
+            }
+            
+            //Sorts cities alphabetically
+            List<string> fCities = cities.Distinct().ToList();
+            fCities.Sort();
+            
+            //Displays the result
+            Console.WriteLine("\nCities in alphabetical order: ");
+            foreach (string c in fCities)
+            {
+                Console.WriteLine(c);
+            }
+        }
+    }
+}
