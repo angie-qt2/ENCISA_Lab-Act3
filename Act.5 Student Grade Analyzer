@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> grades = new List<int>();
+            List <int> gradeCounts = new List<int>(5);
+            Console.WriteLine("Enter grades:");
+
+            for (int i = 0; i < 7; i++)
+            {
+                bool valid = false;
+
+                while (!valid)
+                {
+                    Console.Write($"Grade {i + 1}: ");
+                    int inputGrade = Convert.ToInt32(Console.ReadLine());
+
+                    if (inputGrade >= 0 && inputGrade <= 100)
+                    {
+                        grades[i] = inputGrade;
+                        valid = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid grade. Must be between 0 and 100.");
+                    }
+                }
+            }
+            foreach (int grade in grades)
+            {
+                switch (grade / 10) 
+            {
+                case 10: // Covers the case for 100
+                case 9:
+                    Console.WriteLine($"{grade}: A");
+                    gradeCounts[0]++;
+                    break;
+                case 8:
+                    Console.WriteLine($"{grade}: B");
+                    gradeCounts[1]++;
+                    break;
+                case 7:
+                    Console.WriteLine($"{grade}: C");
+                    gradeCounts[2]++;
+                    break;
+                case 6:
+                    Console.WriteLine($"{grade}: D");
+                    gradeCounts[3]++;
+                    break;
+                default: // Covers grades < 60
+                    Console.WriteLine($"{grade}: F");
+                    gradeCounts[4]++;
+                    break;
+            }
+        }
+        // Display counts of each grade
+        Console.WriteLine("\nGrade Counts:");
+        Console.WriteLine($"A: {gradeCounts[0]}");
+        Console.WriteLine($"B: {gradeCounts[1]}");
+        Console.WriteLine($"C: {gradeCounts[2]}");
+        Console.WriteLine($"D: {gradeCounts[3]}");
+        Console.WriteLine($"F: {gradeCounts[4]}");
+        }
+    }
+}
