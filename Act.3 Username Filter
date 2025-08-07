@@ -25,31 +25,17 @@ namespace Act3
             Console.Write("Enter a character to search for in usernames: ");
             string searchChar = Console.ReadLine();
 
-            // Validate input
-            if (string.IsNullOrEmpty(searchChar) || searchChar.Length > 1)
-            {
-                Console.WriteLine("\nPlease enter a single character.");
-                return;
-            }
-
             // Convert search character to lowercase 
             char searchCharacter = char.ToLower(searchChar[0]);
 
             // Filter and display matched usernames
-            Console.WriteLine("\nMatched Usernames:");
-            bool foundMatch = false;
-            foreach (string userName in userNames)
+            Console.WriteLine("\nMatched character:");
+            foreach (string search in userNames)
             {
-                if (userName.ToLower().Contains(searchCharacter))
+                if (search.ToLower().Contains(searchCharacter))
                 {
-                    Console.WriteLine(userName);
-                    foundMatch = true;
+                    Console.WriteLine(search.ToLower());
                 }
-            }
-
-            if (!foundMatch)
-            {
-                Console.WriteLine("Error! Display matched usernames only.");
             }
         }
     }
