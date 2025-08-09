@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> allNum = new List<int>();
+            List<int> evenNum = new List<int>();
+            List<int> oddNum = new List<int>();
+
+            Console.WriteLine("Enter 12 numbers:");
+
+            for (int i = 0; i < 12; i++)
+            {
+                Console.Write($"Number {i + 1}: ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                allNum.Add(num);
+            }
+
+            foreach (int num in allNum)
+            {
+                if (num % 2 == 0)
+                {
+                    evenNum.Add(num);
+                }
+                else
+                {
+                    oddNum.Add(num);
+                }
+            }
+
+            Console.WriteLine("\nAll numbers entered:");
+            Console.WriteLine(string.Join(", ", allNum));
+
+            Console.WriteLine("\nEven numbers:");
+            Console.WriteLine(string.Join(", ", evenNum));
+
+            Console.WriteLine("\nOdd numbers:");
+            Console.WriteLine(string.Join(", ", oddNum));
+        }
+    }
+}
