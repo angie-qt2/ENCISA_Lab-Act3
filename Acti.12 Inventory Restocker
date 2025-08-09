@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> Products = new List<string>();
+            List<int> Stocks = new List<int>();
+
+            Console.WriteLine("Enter 10 products and their stock:");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Product {i + 1} name: ");
+                string name = Console.ReadLine();
+                Products.Add(name);
+
+                Console.Write($"Stock count for {name}: ");
+                int Stock = int.Parse(Console.ReadLine());
+
+                if (Stock < 10)
+                {
+                    Stock += 20;
+                    Console.WriteLine($"{name} was restocked.");
+                }
+
+                Stocks.Add(Stock);
+            }
+
+            Console.WriteLine("\nFinal Stock Levels:");
+            for (int i = 0; i < Products.Count; i++)
+            {
+                Console.WriteLine($"{Products[i]} {Stocks[i]} in stock");
+            }
+        }
+    }
+}
