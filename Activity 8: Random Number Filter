@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> nums = new List<int>();
+
+            Console.WriteLine("Enter 10 numbers:");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Number {i + 1}: ");
+                nums.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+
+            List<int> filteredNum = nums.Where(n => n > 50).ToList();
+
+            Console.WriteLine($"\nTotal of numbers entered: {nums.Count}");
+            Console.WriteLine($"Numbers greater than 50: {filteredNum.Count}");
+
+            if (filteredNum.Count > 0)
+            {
+                Console.WriteLine("\nFiltered numbers:");
+                foreach (int num in filteredNum)
+                {
+                    Console.WriteLine(num);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNo numbers greater than 50 found.");
+            }
+        }
+    }
+}
