@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> isStudents = new List<string>();
+            List<int> isScores = new List<int>();
+
+            Console.WriteLine("Enter names and scores: ");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Student name #{i + 1}: ");
+                isStudents.Add(Console.ReadLine());
+
+                Console.Write($"Score #{i + 1}: ");
+                isScores.Add(Convert.ToInt32(Console.ReadLine()));
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < isScores.Count - 1; i++)
+            {
+                for (int j = i + 1; j < isScores.Count; j++)
+                {
+                    if (isScores[j] > isScores[i])
+                    {
+                
+                        int tempScore = isScores[i];
+                        isScores[i] = isScores[j];
+                        isScores[j] = tempScore;
+
+                        string tempName = isStudents[i];
+                        isStudents[i] = isStudents[j];
+                        isStudents[j] = tempName;
+                    }
+                }
+            }
+
+            Console.WriteLine("\nTop 3 Students:");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"{isStudents[i]} - {isScores[i]}");
+            }
+        }
+    }
+}
