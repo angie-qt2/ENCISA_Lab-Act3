@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> courses = new List<string>();
+            Console.WriteLine("Course Registration");
+            Console.WriteLine("Enter 6 course codes (5 characters each)");
+
+            while (courses.Count < 6)
+            {
+                Console.Write($"Enter course #{courses.Count + 1} type 'done' to finish: ");
+                string input = Console.ReadLine().Trim().ToUpper();
+
+                if (input == "DONE" && courses.Count > 0)
+                {
+                    break;
+                }
+
+                if (input.Length != 5)
+                {
+                    Console.WriteLine("Try Again! Course code must be exactly 5 characters");
+                    continue;
+                }
+
+                if (courses.Contains(input))
+                {
+                    Console.WriteLine("Try Again! course code exist!");
+                    continue;
+                }
+
+                courses.Add(input);
+                Console.WriteLine($"Success: Course {input} registered");
+            }
+
+            Console.WriteLine("\nRegistered Courses:");
+            if (courses.Count == 0)
+            {
+                Console.WriteLine("No courses registered");
+            }
+            else
+            {
+                foreach (string course in courses)
+                {
+                    Console.WriteLine(course);
+                }
+            }
+        }
+    }
+}
